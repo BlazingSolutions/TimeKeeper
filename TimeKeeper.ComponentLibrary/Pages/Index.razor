@@ -1,0 +1,24 @@
+﻿@page "/"
+@page "/Index"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+
+    <MudText Typo="Typo.h3" GutterBottom="true">Time Keeper</MudText>
+
+    <MudAlert Severity="Severity.Success">Welcome to your new time keeping app!</MudAlert>
+
+    @if (DisplayAddEntry)
+    {
+        <AddTimeEntry CurrentUser="@CurrentUser" OnClick="@SubmitActionAsync" />
+    }
+    else
+    {
+
+        <MudItem xs="12" xl="6" Class="mt-6">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" @onclick="@(() => AddNewTimeEntry())">Add New Time Entry</MudButton>
+        </MudItem>
+
+        <ListTimeEntries TimeEntries="@TimeEntries" SelectedDate="@SelectedDate" />
+    }
+
+</MudContainer>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="72b0bfa4-232e-4789-8613-0492a0498480" ChangeDateTime="05/11/2021 21:13:07">
+    <Property Name="ElementName" Value="[dbo].[TimeEntries].[Comment]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TimeEntries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="75526ddf-20e6-4e26-9401-c7fc04b54043" ChangeDateTime="05/11/2021 21:13:20">
+    <Property Name="ElementName" Value="[dbo].[TimeEntries].[Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TimeEntries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Notes" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8286cf05-698a-4ce9-9aad-8b8d7631c6a8" ChangeDateTime="05/11/2021 21:23:36">
+    <Property Name="ElementName" Value="[dbo].[Users].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bff8e2bc-6887-4376-bcfd-2b1f7e88edbf" ChangeDateTime="05/11/2021 21:26:49">
+    <Property Name="ElementName" Value="[dbo].[Users].[RegionalOfficeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RegionalOffice" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3b9d1c64-7d9b-4b07-988e-244662e6f170" ChangeDateTime="05/13/2021 14:49:12">
+    <Property Name="ElementName" Value="[dbo].[Category]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[Categories]" />
+  </Operation>
+</Operations>

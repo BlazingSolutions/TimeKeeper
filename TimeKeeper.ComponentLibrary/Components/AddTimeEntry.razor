@@ -1,0 +1,52 @@
+﻿<MudItem xs="12" xl="6" Class="mt-6 mb-12">
+
+    <MudCard>
+
+        <MudCardContent>
+
+            <MudText Typo="Typo.h6" GutterBottom="true">Add Time Entry</MudText>
+
+            <MudForm>
+
+                <MudSelect Label="Client" Class="mb-6" @bind-Value="TimeEntry.Client" Validation="ClientValidator.Validation">
+                    <MudSelectItem Value="0">Please select</MudSelectItem>
+                    @if (Clients is not null)
+                    {
+                        @foreach (var client in Clients)
+                        {
+                            <MudSelectItem Value="@(client.Id)">@client.Name</MudSelectItem>
+                        }
+                    }
+                </MudSelect>
+
+                <MudSelect Label="Category" Class="mb-6" @bind-Value="TimeEntry.Category" Validation="CategoryValidator.Validation">
+                    <MudSelectItem Value="0">Please select</MudSelectItem>
+                    @if (Categories is not null)
+                    {
+                        @foreach (var category in Categories)
+                        {
+                            <MudSelectItem Value="@(category.Id)">@category.Name</MudSelectItem>
+                        }
+                    }
+                </MudSelect>
+
+                <MudItem xs="12" sm="12" md="12" Class="mb-6">
+                    <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" @bind-Value="TimeEntry.Notes" Validation="NotesValidator.Validation" />
+                </MudItem>
+
+                <MudItem xs="12" sm="6" md="4" Class="mb-6">
+                    <MudNumericField Label="Hours" HelperText="Decimals allowed" Variant="Variant.Text" Min="0.0M" Max="24.0M" @bind-Value="TimeEntry.Hours" />
+                </MudItem>
+
+            </MudForm>
+
+        </MudCardContent>
+
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="@(() => SaveAsync())" Class="mr-3">Submit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" @onclick="@(() => CancelAsync())">Cancel</MudButton>
+        </MudCardActions>
+
+    </MudCard>
+
+</MudItem>

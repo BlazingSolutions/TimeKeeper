@@ -1,0 +1,23 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/TimeKeeper.Api/bin/Debug/net5.0
+/TimeKeeper.Api/obj
+/TimeKeeper.Client/bin/Debug/net5.0
+/TimeKeeper.Client/obj
+/TimeKeeper.ComponentLibrary/bin/Debug/net5.0
+/TimeKeeper.ComponentLibrary/obj
+/TimeKeeper.Database/bin/Debug
+/TimeKeeper.Database/obj/Debug
+/TimeKeeper.Domain/bin/Debug/net5.0
+/TimeKeeper.Domain/obj
+/TimeKeeper.Repository/bin/Debug/net5.0
+/TimeKeeper.Repository/obj
+/TimeKeeper.Server/bin/Debug/net5.0
+/TimeKeeper.Server/obj
+/TimeKeeper.Services/bin/Debug/net5.0
+/TimeKeeper.Services/obj
+/TimeKeeper.Database/TimeKeeper.Database.dbmdl
+/TimeKeeper.Database/TimeKeeper.Database.jfm
