@@ -12,9 +12,7 @@ namespace TimeKeeper.ComponentLibrary.Components
 
         [Parameter] public EventCallback<string> OnClick { get; set; }        
 
-        protected TimeEntry TimeEntry { get; set; }
-
-        MudSelect<int> ClientSelect;
+        protected TimeEntry TimeEntry { get; set; }        
 
         protected override void OnParametersSet()
         {
