@@ -30,20 +30,15 @@ namespace TimeKeeper.Repository
             await _context.SaveChangesAsync();
 
             return timeEntry;
-        }
+        }        
 
-        public async Task<TimeEntry> GetByIdAsync(int id)
+        public IEnumerable<TimeEntry> GetForSelectedDateAsync(int userId, DateTime selectedDate)
         {
-            return await _context.TimeEntries.FindAsync(id);
-        }
-
-        public IEnumerable<TimeEntriesView> GetForUserOnSelectedDateAsync(int userId, DateTime selectedDate)
-        {
-            string sql = "SELECT * FROM TimeEntriesView " +
+            string sql = "SELECT * FROM TimeEntries " +
                 "WHERE [User] = @UserId AND CAST(DateCreated As date) = CAST(@selectedDate As date) " +
                 "ORDER BY DateCreated DESC";
 
-            IEnumerable<TimeEntriesView> timeEntries = _dbConnection.Query<TimeEntriesView>(sql,
+            IEnumerable<TimeEntry> timeEntries = _dbConnection.Query<TimeEntry>(sql,
                 new
                 {
                     UserId = userId,
@@ -51,33 +46,6 @@ namespace TimeKeeper.Repository
                 });
 
             return timeEntries;
-        }
-
-        public async Task<TimeEntry> UpdateAsync(TimeEntry timeEntry)
-        {
-            timeEntry.DateModified = DateTime.Now;
-
-            _context.TimeEntries.Add(timeEntry);
-
-            await _context.SaveChangesAsync();
-
-            return timeEntry;
-        }
-
-        public async Task<bool> DeleteByIdAsync(int id)
-        {
-            TimeEntry timeEntry = await GetByIdAsync(id);
-
-            if (timeEntry is null)
-            {
-                return false;
-            }
-
-            _context.TimeEntries.Remove(timeEntry);
-
-            await _context.SaveChangesAsync();
-
-            return true;
         }
     }
 }

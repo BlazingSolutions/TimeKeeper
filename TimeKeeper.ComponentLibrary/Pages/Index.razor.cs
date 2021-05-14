@@ -12,20 +12,14 @@ namespace TimeKeeper.ComponentLibrary.Pages
     {
         [Inject] protected ITimeEntryService TimeEntryService { get; set; }
 
-        protected User CurrentUser { get; set; }
-
         protected DateTime SelectedDate { get; set; }
 
-        protected IEnumerable<TimeEntriesView> TimeEntries { get; set; }
+        protected IEnumerable<TimeEntry> TimeEntries { get; set; }
 
         protected bool DisplayAddEntry { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
         {
-            //TODO Remove below and replace with actual user
-            CurrentUser = new();
-            CurrentUser.Id = 1;
-
             SelectedDate = DateTime.Today;
             
             await GetTimeEntriesAsync();
@@ -33,7 +27,10 @@ namespace TimeKeeper.ComponentLibrary.Pages
 
         private async Task GetTimeEntriesAsync()
         {
-            TimeEntries = await TimeEntryService.GetForUserOnSelectedDateAsync(1, SelectedDate);
+            //TODO this will be replaced with actual user id once authentication has been implemented.
+            var userId = 1;
+
+            TimeEntries = await TimeEntryService.GetForSelectedDateAsync(userId, SelectedDate);
 
             DisplayAddEntry = TimeEntries.Any() == false;
         }

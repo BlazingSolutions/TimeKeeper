@@ -8,30 +8,27 @@
 
             <MudForm>
 
-                <MudSelect Label="Client" Class="mb-6" @bind-Value="TimeEntry.Client" Validation="ClientValidator.Validation">
+                <MudSelect Label="Client" Class="mb-6" @bind-Value="TimeEntry.Client" @ref="ClientSelect">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
-                    @if (Clients is not null)
-                    {
-                        @foreach (var client in Clients)
-                        {
-                            <MudSelectItem Value="@(client.Id)">@client.Name</MudSelectItem>
-                        }
-                    }
+                    <MudSelectItem Value="1">Amazon</MudSelectItem>
+                    <MudSelectItem Value="2">Microsoft</MudSelectItem>
+                    <MudSelectItem Value="3">Google</MudSelectItem>
+                    <MudSelectItem Value="4">Twitter</MudSelectItem>
+                    <MudSelectItem Value="5">Facebook</MudSelectItem>
+                    <MudSelectItem Value="6">Other</MudSelectItem>
                 </MudSelect>
 
-                <MudSelect Label="Category" Class="mb-6" @bind-Value="TimeEntry.Category" Validation="CategoryValidator.Validation">
+                <MudSelect Label="Category" Class="mb-6" @bind-Value="TimeEntry.Category">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
-                    @if (Categories is not null)
-                    {
-                        @foreach (var category in Categories)
-                        {
-                            <MudSelectItem Value="@(category.Id)">@category.Name</MudSelectItem>
-                        }
-                    }
+                    <MudSelectItem Value="1">Meeting</MudSelectItem>
+                    <MudSelectItem Value="2">Call</MudSelectItem>
+                    <MudSelectItem Value="3">Documentation</MudSelectItem>
+                    <MudSelectItem Value="4">Travel</MudSelectItem>
+                    <MudSelectItem Value="5">Other</MudSelectItem>
                 </MudSelect>
 
                 <MudItem xs="12" sm="12" md="12" Class="mb-6">
-                    <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" @bind-Value="TimeEntry.Notes" Validation="NotesValidator.Validation" />
+                    <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" @bind-Value="TimeEntry.Notes" />
                 </MudItem>
 
                 <MudItem xs="12" sm="6" md="4" Class="mb-6">

@@ -1,47 +1,30 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Components;
+using MudBlazor;
 using System.Threading.Tasks;
 using TimeKeeper.Domain.Models;
-using TimeKeeper.Domain.Validators;
 using TimeKeeper.Services;
 
 namespace TimeKeeper.ComponentLibrary.Components
 {
     public partial class AddTimeEntry
-    {
-        [Inject] protected IClientService ClientService { get; set; }
-        [Inject] protected ICategoryService CategoryService { get; set; }
+    {        
         [Inject] protected ITimeEntryService TimeEntryService { get; set; }
 
-        [Parameter] public EventCallback<string> OnClick { get; set; }
-        [Parameter] public User CurrentUser { get; set; }
+        [Parameter] public EventCallback<string> OnClick { get; set; }        
 
-        protected TimeEntry TimeEntry { get; set; }        
-        protected IEnumerable<Category> Categories { get; set; }        
-        protected IEnumerable<Client> Clients { get; set; }        
-        
-        //validations
-        protected FluentValueValidator<int> ClientValidator = new(x => x.GreaterThan(0).WithMessage("Please select client"));
-        protected FluentValueValidator<int> CategoryValidator = new(x => x.GreaterThan(0).WithMessage("Please select category"));
-        protected FluentValueValidator<string> NotesValidator = new(x => x.NotEmpty().MaximumLength(100).WithMessage("Please enter note"));
+        protected TimeEntry TimeEntry { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                Clients = await ClientService.GetAllAsync();
-
-                Categories = await CategoryService.GetAllAsync();                
-            }
-        }
+        MudSelect<int> ClientSelect;
 
         protected override void OnParametersSet()
         {
+            //TODO this will be replaced with actual user id once authentication has been implemented.
+            var userId = 1;
+            
             TimeEntry = new TimeEntry
             {
-                User = CurrentUser.Id,
-                CreatedBy = CurrentUser.Id
+                User = userId,
+                CreatedBy = userId
             };
         }
 

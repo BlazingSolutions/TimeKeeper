@@ -19,9 +19,5 @@ namespace TimeKeeper.Domain.Models
         public int? ModifiedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public int CreatedBy { get; set; }
-
-        public virtual Category CategoryNavigation { get; set; }
-        public virtual Client ClientNavigation { get; set; }
-        public virtual User UserNavigation { get; set; }
     }
 }
