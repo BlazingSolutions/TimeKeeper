@@ -8,6 +8,6 @@ namespace TimeKeeper.Repository
     public interface ITimeEntryRepository
     {        
         Task<TimeEntry> CreateAsync(TimeEntry timeEntry);                
-        IEnumerable<TimeEntry> GetForSelectedDateAsync(int userId, DateTime selectedDate);        
+        Task<IEnumerable<TimeEntry>> GetForSelectedDateAsync(int userId, DateTime selectedDate);        
     }
 }
