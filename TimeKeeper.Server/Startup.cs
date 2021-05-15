@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using MudBlazor.Services;
 using System;
 using System.Net.Http;
-using TimeKeeper.Services;
 
 namespace TimeKeeper.Server
 {
@@ -27,12 +26,7 @@ namespace TimeKeeper.Server
             services.AddServerSideBlazor();
             services.AddMudServices();
 
-            services.AddScoped(s =>
-            {
-                return new HttpClient { BaseAddress = new Uri(Configuration.GetValue<string>("apiLocation")) };
-            });
-            
-            services.AddScoped<ITimeEntryService, TimeEntryService>();
+            services.AddScoped(s => new HttpClient { BaseAddress = new Uri(Configuration.GetValue<string>("apiLocation")) });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

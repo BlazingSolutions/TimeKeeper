@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TimeKeeper.Domain.Models;
-using TimeKeeper.Repository;
+using MediatR;
+using TimeKeeper.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Controllers
 {
@@ -10,17 +11,17 @@ namespace TimeKeeper.Api.Controllers
     [ApiController]
     public class TimeEntryController : ControllerBase
     {
-        private readonly ITimeEntryRepository _timeEntryRepository;
+        private readonly IMediator _mediator;
 
-        public TimeEntryController(ITimeEntryRepository timeEntryRepository)
+        public TimeEntryController(IMediator mediator)
         {
-            _timeEntryRepository = timeEntryRepository;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] TimeEntry timeEntry)
+        public async Task<ActionResult<int>> Create([FromBody] CreateTimeEntry.Command command)
         {
-            if (timeEntry == null)
+            if (command == null)
             {
                 return BadRequest();
             }
@@ -30,15 +31,14 @@ namespace TimeKeeper.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            timeEntry = await _timeEntryRepository.CreateAsync(timeEntry);
-
-            return Created("timeEntry", timeEntry);
+            return Ok(await _mediator.Send(command));
         }
 
         [HttpGet("GetForSelectedDate")]
-        public IActionResult GetForSelectedDate(int userId, DateTime selectedDate)
+        public async Task<ActionResult<IEnumerable<GetForSelectedDate.Model>>> GetForSelectedDate([FromQuery]GetForSelectedDate.Query query)
         {
-            return Ok(_timeEntryRepository.GetForSelectedDateAsync(userId, selectedDate));
+            var results = await _mediator.Send(query);
+            return Ok(results);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TimeKeeper.Domain.Models
+namespace TimeKeeper.Api.Domain
 {
     public partial class TimeEntry
     {

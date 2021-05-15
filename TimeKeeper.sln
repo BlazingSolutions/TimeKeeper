@@ -7,15 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Api", "TimeKeepe
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TimeKeeper.Database", "TimeKeeper.Database\TimeKeeper.Database.sqlproj", "{D9975605-3522-45C6-BFDD-C0EC7A2F434E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Domain", "TimeKeeper.Domain\TimeKeeper.Domain.csproj", "{137515D4-88EE-440F-B317-55093140B254}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Repository", "TimeKeeper.Repository\TimeKeeper.Repository.csproj", "{766E62A5-6731-41A3-B29E-594634CB97F8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Client", "TimeKeeper.Client\TimeKeeper.Client.csproj", "{08CA8367-F06C-4EDA-993C-EC3EDA025F4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.ComponentLibrary", "TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj", "{1872AB84-46A7-4234-93A7-169637D0F7F3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Services", "TimeKeeper.Services\TimeKeeper.Services.csproj", "{6B03B9AC-097B-4FA5-9725-60FDF54C7D58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeKeeper.Server", "TimeKeeper.Server\TimeKeeper.Server.csproj", "{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}"
 EndProject
@@ -35,14 +29,6 @@ Global
 		{D9975605-3522-45C6-BFDD-C0EC7A2F434E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9975605-3522-45C6-BFDD-C0EC7A2F434E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9975605-3522-45C6-BFDD-C0EC7A2F434E}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{137515D4-88EE-440F-B317-55093140B254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137515D4-88EE-440F-B317-55093140B254}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{137515D4-88EE-440F-B317-55093140B254}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{137515D4-88EE-440F-B317-55093140B254}.Release|Any CPU.Build.0 = Release|Any CPU
-		{766E62A5-6731-41A3-B29E-594634CB97F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{766E62A5-6731-41A3-B29E-594634CB97F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{766E62A5-6731-41A3-B29E-594634CB97F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{766E62A5-6731-41A3-B29E-594634CB97F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08CA8367-F06C-4EDA-993C-EC3EDA025F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08CA8367-F06C-4EDA-993C-EC3EDA025F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CA8367-F06C-4EDA-993C-EC3EDA025F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,10 +37,6 @@ Global
 		{1872AB84-46A7-4234-93A7-169637D0F7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1872AB84-46A7-4234-93A7-169637D0F7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1872AB84-46A7-4234-93A7-169637D0F7F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B03B9AC-097B-4FA5-9725-60FDF54C7D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B03B9AC-097B-4FA5-9725-60FDF54C7D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B03B9AC-097B-4FA5-9725-60FDF54C7D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B03B9AC-097B-4FA5-9725-60FDF54C7D58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU

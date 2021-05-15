@@ -1,28 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TimeKeeper.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using TimeKeeper.Api.Domain;
 
 #nullable disable
 
-namespace TimeKeeper.Repository
+namespace TimeKeeper.Api.Data
 {
     public partial class TimeKeeperContext : DbContext
     {
-        private readonly string _connectionString;
-
-        public TimeKeeperContext(string connectionString)
+        public TimeKeeperContext(DbContextOptions options):base(options)
         {
-            _connectionString = connectionString;
+           
         }
         
-        public virtual DbSet<TimeEntry> TimeEntries { get; set; }        
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(_connectionString);
-            }
-        }
+        public virtual DbSet<TimeEntry> TimeEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
