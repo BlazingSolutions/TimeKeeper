@@ -31,9 +31,9 @@ namespace TimeKeeper.Repository
             await _context.SaveChangesAsync();
 
             return timeEntry;
-        }
+        }        
 
-        public async Task<TimeEntry> GetByIdAsync(int id)
+        public IEnumerable<TimeEntry> GetForSelectedDateAsync(int userId, DateTime selectedDate)
         {
             return await _context.TimeEntries.FindAsync(id);
         }
@@ -45,33 +45,6 @@ namespace TimeKeeper.Repository
                 User = userId,
                 SelectedDate = selectedDate
             }.ExecuteAsync(_dbConnection);
-        }
-
-        public async Task<TimeEntry> UpdateAsync(TimeEntry timeEntry)
-        {
-            timeEntry.DateModified = DateTime.Now;
-
-            _context.TimeEntries.Add(timeEntry);
-
-            await _context.SaveChangesAsync();
-
-            return timeEntry;
-        }
-
-        public async Task<bool> DeleteByIdAsync(int id)
-        {
-            TimeEntry timeEntry = await GetByIdAsync(id);
-
-            if (timeEntry is null)
-            {
-                return false;
-            }
-
-            _context.TimeEntries.Remove(timeEntry);
-
-            await _context.SaveChangesAsync();
-
-            return true;
         }
     }
 }
