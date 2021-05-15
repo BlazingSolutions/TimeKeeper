@@ -22,6 +22,7 @@ namespace TimeKeeper.Api.Features.TimeEntry
             public int Category { get; set; }
             public int Client { get; set; }
             public decimal Hours { get; set; }
+            public string Notes { get; set; }
         }
         
         public class Handler : IRequestHandler<Query, IEnumerable<Model>>
@@ -51,7 +52,8 @@ namespace TimeKeeper.Api.Features.TimeEntry
                 {
                     Category = x.Category,
                     Client = x.Client,
-                    Hours = x.Hours
+                    Hours = x.Hours,
+                    Notes = x.Notes
                 });
             }
         }

@@ -37,7 +37,8 @@ namespace TimeKeeper.Api.Features.TimeEntry
                     DateCreated = DateTime.Now, 
                     IsSubmitted = false, 
                     IsAuthorised = false,
-                    CreatedBy = command.UserId
+                    CreatedBy = command.UserId,
+                    User = command.UserId
                 };
 
                 _context.TimeEntries.Add(timeEntry);
