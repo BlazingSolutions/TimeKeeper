@@ -59,17 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="TimeEntries.sql" />
-    <Build Include="Clients.sql" />
-    <Build Include="Categories.sql" />
-    <Build Include="Users.sql" />
-    <Build Include="RegionalOffices.sql" />
-    <Build Include="TimeEntriesView.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TimeKeeper.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TimeKeeper.Database.publish.xml" />
-    <None Include="SeedData.sql" />
   </ItemGroup>
 </Project>

@@ -24,12 +24,8 @@ namespace TimeKeeper.Api
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             TimeKeeperContext timeKeeperContext = new(Configuration.GetConnectionString("DefaultConnection"));
-
-            services.AddScoped<ICategoryRepository>(_ => new CategoryRepository(timeKeeperContext));
-            services.AddScoped<IClientRepository>(_ => new ClientRepository(timeKeeperContext));
-            services.AddScoped<IRegionalOfficeRepository>(_ => new RegionalOfficeRepository(timeKeeperContext));
+            
             services.AddScoped<ITimeEntryRepository>(_ => new TimeEntryRepository(timeKeeperContext, connectionString));
-            services.AddScoped<IUserRepository>(_ => new UserRepository(timeKeeperContext));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

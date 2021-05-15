@@ -31,12 +31,8 @@ namespace TimeKeeper.Server
             {
                 return new HttpClient { BaseAddress = new Uri(Configuration.GetValue<string>("apiLocation")) };
             });
-
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IClientService, ClientService>();
-            services.AddScoped<IRegionalOfficeService, RegionalOfficeService>();
+            
             services.AddScoped<ITimeEntryService, TimeEntryService>();
-            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

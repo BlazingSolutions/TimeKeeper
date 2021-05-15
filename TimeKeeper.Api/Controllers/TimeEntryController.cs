@@ -35,56 +35,10 @@ namespace TimeKeeper.Api.Controllers
             return Created("timeEntry", timeEntry);
         }
 
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpGet("GetForSelectedDate")]
+        public IActionResult GetForSelectedDate(int userId, DateTime selectedDate)
         {
-            try
-            {
-                var isDeleted = await _timeEntryRepository.DeleteByIdAsync(id);
-
-                return isDeleted ? Ok() : BadRequest();
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            return Ok(_timeEntryRepository.GetByIdAsync(id));
-        }
-
-        [HttpGet("GetForUserOnSelectedDate")]
-        public IActionResult GetForUserOnSelectedDate(int userId, DateTime selectedDate)
-        {
-            return Ok(_timeEntryRepository.GetForUserOnSelectedDateAsync(userId, selectedDate));
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] TimeEntry timeEntry)
-        {
-            if (timeEntry == null)
-            {
-                return BadRequest();
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            TimeEntry timeEntryToUpdate = await _timeEntryRepository.GetByIdAsync(timeEntry.Id);
-
-            if (timeEntryToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            await _timeEntryRepository.UpdateAsync(timeEntry);
-
-            return NoContent(); //success
+            return Ok(_timeEntryRepository.GetForSelectedDateAsync(userId, selectedDate));
         }
     }
 }
