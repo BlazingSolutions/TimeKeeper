@@ -10,7 +10,7 @@ namespace TimeKeeper.Repository
         Task<TimeEntry> CreateAsync(TimeEntry timeEntry);
         Task<bool> DeleteByIdAsync(int id);
         Task<TimeEntry> GetByIdAsync(int id);
-        IEnumerable<TimeEntriesView> GetForUserOnSelectedDateAsync(int userId, DateTime selectedDate);
+        Task<IEnumerable<TimeEntriesView>> GetForUserOnSelectedDateAsync(int userId, DateTime selectedDate);
         Task<TimeEntry> UpdateAsync(TimeEntry timeEntry);
     }
 }

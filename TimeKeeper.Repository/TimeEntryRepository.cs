@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using TimeKeeper.Domain.Models;
+using TimeKeeper.Repository.Queries;
 
 namespace TimeKeeper.Repository
 {
@@ -37,20 +38,13 @@ namespace TimeKeeper.Repository
             return await _context.TimeEntries.FindAsync(id);
         }
 
-        public IEnumerable<TimeEntriesView> GetForUserOnSelectedDateAsync(int userId, DateTime selectedDate)
+        public async Task<IEnumerable<TimeEntriesView>> GetForUserOnSelectedDateAsync(int userId, DateTime selectedDate)
         {
-            string sql = "SELECT * FROM TimeEntriesView " +
-                "WHERE [User] = @UserId AND CAST(DateCreated As date) = CAST(@selectedDate As date) " +
-                "ORDER BY DateCreated DESC";
-
-            IEnumerable<TimeEntriesView> timeEntries = _dbConnection.Query<TimeEntriesView>(sql,
-                new
-                {
-                    UserId = userId,
-                    SelectedDate = selectedDate
-                });
-
-            return timeEntries;
+            return await new TimeEntriesQuery()
+            {
+                User = userId,
+                SelectedDate = selectedDate
+            }.ExecuteAsync(_dbConnection);
         }
 
         public async Task<TimeEntry> UpdateAsync(TimeEntry timeEntry)
