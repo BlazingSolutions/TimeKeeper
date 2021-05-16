@@ -9,7 +9,7 @@ namespace TimeKeeper.ComponentLibrary.Api
     public interface ITimeEntryApi
     {
         [Get("/api/TimeEntry/GetForSelectedDate")]
-        Task<IEnumerable<GetForSelectedDate.Model>> GetForSelectedDate(int userId, DateTime selectedDate);
+        Task<IEnumerable<GetForSelectedDate.Model>> GetForSelectedDate(GetForSelectedDate.Query query);
 
         [Post("/api/TimeEntry")]
         Task<int> Create(CreateTimeEntry.Command command);

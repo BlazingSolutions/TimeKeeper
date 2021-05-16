@@ -30,7 +30,11 @@ namespace TimeKeeper.ComponentLibrary.Pages
             //TODO this will be replaced with actual user id once authentication has been implemented.
             var userId = 1;
 
-            TimeEntries = await TimeEntryApi.GetForSelectedDate(userId, SelectedDate);
+            TimeEntries = await TimeEntryApi.GetForSelectedDate(new GetForSelectedDate.Query
+            {
+                UserId = userId,
+                SelectedDate = SelectedDate
+            });
 
             DisplayAddEntry = TimeEntries.Any() == false;
         }

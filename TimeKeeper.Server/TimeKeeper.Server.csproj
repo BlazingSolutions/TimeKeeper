@@ -8,4 +8,8 @@
     <ProjectReference Include="..\TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.0.38" />
+  </ItemGroup>
+
 </Project>
