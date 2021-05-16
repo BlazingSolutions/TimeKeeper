@@ -9,7 +9,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TimeKeeper.Database", "Time
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Client", "TimeKeeper.Client\TimeKeeper.Client.csproj", "{08CA8367-F06C-4EDA-993C-EC3EDA025F4C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.ComponentLibrary", "TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj", "{1872AB84-46A7-4234-93A7-169637D0F7F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Shared", "TimeKeeper.Shared\TimeKeeper.Shared.csproj", "{1872AB84-46A7-4234-93A7-169637D0F7F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeKeeper.Server", "TimeKeeper.Server\TimeKeeper.Server.csproj", "{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}"
 EndProject

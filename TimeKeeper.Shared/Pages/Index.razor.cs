@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TimeKeeper.ComponentLibrary.Api;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using Microsoft.AspNetCore.Components;
+using TimeKeeper.Shared.Api;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
-namespace TimeKeeper.ComponentLibrary.Pages
+namespace TimeKeeper.Shared.Pages
 {
     public partial class Index
     {

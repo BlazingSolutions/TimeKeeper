@@ -4,7 +4,7 @@ using MudBlazor.Services;
 using System;
 using System.Threading.Tasks;
 using Refit;
-using TimeKeeper.ComponentLibrary.Api;
+using TimeKeeper.Shared.Api;
 
 namespace TimeKeeper.Client
 {

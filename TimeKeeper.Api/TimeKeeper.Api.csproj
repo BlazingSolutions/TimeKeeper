@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj" />
+    <ProjectReference Include="..\TimeKeeper.Shared\TimeKeeper.Shared.csproj" />
   </ItemGroup>
 
 </Project>

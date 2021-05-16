@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Refit;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
-namespace TimeKeeper.ComponentLibrary.Api
+namespace TimeKeeper.Shared.Api
 {
     public interface ITimeEntryApi
     {

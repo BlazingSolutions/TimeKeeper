@@ -1,11 +1,12 @@
-<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(TimeKeeper.ComponentLibrary.Pages.Index).Assembly }" PreferExactMatches="@true" >
+@using Index = TimeKeeper.Shared.Pages.Index
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Index).Assembly }" PreferExactMatches="@true" >
     
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(TimeKeeper.ComponentLibrary.Shared.MainLayout)" />
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(TimeKeeper.Shared.Shared.MainLayout)" />
     </Found>
 
     <NotFound>
-        <LayoutView Layout="@typeof(TimeKeeper.ComponentLibrary.Shared.MainLayout)">
+        <LayoutView Layout="@typeof(TimeKeeper.Shared.Shared.MainLayout)">
             <p>Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>

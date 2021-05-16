@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using MudBlazor.Services;
 using System;
 using Refit;
-using TimeKeeper.ComponentLibrary.Api;
+using TimeKeeper.Shared.Api;
 
 namespace TimeKeeper.Server
 {

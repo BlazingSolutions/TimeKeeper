@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TimeKeeper.Api.Data;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Features.TimeEntry
 {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Dapper;
 using MediatR;
 using Microsoft.Data.SqlClient;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Features.TimeEntry
 {

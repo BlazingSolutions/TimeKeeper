@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace TimeKeeper.ComponentLibrary.Api.Features.TimeEntry
+namespace TimeKeeper.Shared.Api.Features.TimeEntry
 {
     public class CreateTimeEntry
     {

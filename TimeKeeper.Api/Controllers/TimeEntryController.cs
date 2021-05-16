@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Controllers
 {

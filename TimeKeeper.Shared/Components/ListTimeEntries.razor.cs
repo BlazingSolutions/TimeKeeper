@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+using Microsoft.AspNetCore.Components;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
-namespace TimeKeeper.ComponentLibrary.Components
+namespace TimeKeeper.Shared.Components
 {
     public partial class ListTimeEntries
     {

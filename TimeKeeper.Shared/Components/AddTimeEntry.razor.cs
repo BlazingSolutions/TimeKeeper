@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
-using MudBlazor;
-using System.Threading.Tasks;
-using TimeKeeper.ComponentLibrary.Api;
-using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using TimeKeeper.Shared.Api;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
-namespace TimeKeeper.ComponentLibrary.Components
+namespace TimeKeeper.Shared.Components
 {
     public partial class AddTimeEntry
-    { [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
+    {
+        [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
 
         [Parameter] public EventCallback<string> OnClick { get; set; }
 
