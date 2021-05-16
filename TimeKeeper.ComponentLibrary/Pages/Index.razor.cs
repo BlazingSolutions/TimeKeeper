@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Example.Api.Client.CSharp.Contracts;
+using TimeKeeper.ComponentLibrary.Api;
+using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
 
 namespace TimeKeeper.ComponentLibrary.Pages
 {
     public partial class Index
     {
-        [Inject] protected ITimeEntryClient TimeEntryClient { get; set; }
-
+        [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
+        
         protected DateTime SelectedDate { get; set; }
 
-        protected ObservableCollection<Model> TimeEntries { get; set; }
+        protected IEnumerable<GetForSelectedDate.Model> TimeEntries { get; set; }
 
         protected bool DisplayAddEntry { get; set; } = false;
 
@@ -29,7 +30,7 @@ namespace TimeKeeper.ComponentLibrary.Pages
             //TODO this will be replaced with actual user id once authentication has been implemented.
             var userId = 1;
 
-            TimeEntries = await TimeEntryClient.GetForSelectedDateAsync(userId, SelectedDate);
+            TimeEntries = await TimeEntryApi.GetForSelectedDate(userId, SelectedDate);
 
             DisplayAddEntry = TimeEntries.Any() == false;
         }

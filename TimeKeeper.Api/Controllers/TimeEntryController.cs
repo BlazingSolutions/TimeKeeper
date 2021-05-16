@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
-using TimeKeeper.Api.Features.TimeEntry;
+using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Controllers
 {
@@ -36,7 +35,8 @@ namespace TimeKeeper.Api.Controllers
         }
 
         [HttpGet("GetForSelectedDate")]
-        public async Task<ActionResult<IEnumerable<GetForSelectedDate.Model>>> GetForSelectedDate([FromQuery]GetForSelectedDate.Query query)
+        public async Task<ActionResult<IEnumerable<GetForSelectedDate.Model>>> GetForSelectedDate(
+            [FromQuery] GetForSelectedDate.Query query)
         {
             var results = await _mediator.Send(query);
             return Ok(results);

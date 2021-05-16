@@ -18,20 +18,21 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Refit" Version="6.0.38" />
     </ItemGroup>
 
     <ItemGroup>
         <Folder Include="wwwroot\" />
     </ItemGroup>
 
-    <Target Name="NSwag" BeforeTargets="BeforeBuild" Condition="'$(TF_BUILD)'!='True'">
-        <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration),CSharpOutputPath=$(MSBuildThisFileDirectory)\Api\Client.CSharp">
-            <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
-            <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
-        </Exec>
+<!--    <Target Name="NSwag" BeforeTargets="BeforeBuild" Condition="'$(TF_BUILD)'!='True'">-->
+<!--        <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration),CSharpOutputPath=$(MSBuildThisFileDirectory)\Api\Client.CSharp">-->
+<!--            <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />-->
+<!--            <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />-->
+<!--        </Exec>-->
 
-        <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
-        <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-    </Target>
+<!--        <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />-->
+<!--        <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />-->
+<!--    </Target>-->
 
 </Project>

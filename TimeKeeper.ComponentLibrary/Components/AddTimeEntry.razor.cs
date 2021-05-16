@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Threading.Tasks;
-using Example.Api.Client.CSharp.Contracts;
+using TimeKeeper.ComponentLibrary.Api;
+using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
 
 namespace TimeKeeper.ComponentLibrary.Components
 {
     public partial class AddTimeEntry
-    { [Inject] protected ITimeEntryClient TimeEntryClient { get; set; }
+    { [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
 
         [Parameter] public EventCallback<string> OnClick { get; set; }
 
-        protected Command Command { get; set; }
+        protected CreateTimeEntry.Command Command { get; set; }
 
         protected override void OnParametersSet()
         {
             //TODO this will be replaced with actual user id once authentication has been implemented.
             var userId = 1;
 
-            Command = new Command
+            Command = new CreateTimeEntry.Command
             {
                 UserId = userId
             };
@@ -25,7 +26,7 @@ namespace TimeKeeper.ComponentLibrary.Components
 
         protected async Task SaveAsync()
         {
-            await TimeEntryClient.CreateAsync(Command);
+            await TimeEntryApi.Create(Command);
             await OnClick.InvokeAsync("SubmitTimeEntry");
         }
 

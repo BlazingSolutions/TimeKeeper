@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Example.Api.Client.CSharp.Contracts;
+using TimeKeeper.ComponentLibrary.Api.Features.TimeEntry;
 
 namespace TimeKeeper.ComponentLibrary.Components
 {
     public partial class ListTimeEntries
     {
-        [Parameter] public ObservableCollection<Model> TimeEntries { get; set; }
+        [Parameter] public IEnumerable<GetForSelectedDate.Model> TimeEntries { get; set; }
         [Parameter] public DateTime SelectedDate { get; set; }
 
         protected string GetClientName(int id)
