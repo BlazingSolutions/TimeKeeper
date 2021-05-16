@@ -11,12 +11,12 @@ namespace TimeKeeper.Repository
     public class TimeEntryRepository : ITimeEntryRepository
     {
         private readonly TimeKeeperContext _context;
-        private readonly IDbConnection _dbConnection;
+        private readonly string _ConnectionString;
 
         public TimeEntryRepository(TimeKeeperContext context, string connectionString)
         {
             _context = context;
-            _dbConnection = new SqlConnection(connectionString);
+            _ConnectionString = connectionString;
         }
 
         public async Task<TimeEntry> CreateAsync(TimeEntry timeEntry)
@@ -30,7 +30,7 @@ namespace TimeKeeper.Repository
             await _context.SaveChangesAsync();
 
             return timeEntry;
-        }        
+        }
 
         public IEnumerable<TimeEntry> GetForSelectedDateAsync(int userId, DateTime selectedDate)
         {
@@ -38,12 +38,14 @@ namespace TimeKeeper.Repository
                 "WHERE [User] = @UserId AND CAST(DateCreated As date) = CAST(@selectedDate As date) " +
                 "ORDER BY DateCreated DESC";
 
-            IEnumerable<TimeEntry> timeEntries = _dbConnection.Query<TimeEntry>(sql,
-                new
-                {
-                    UserId = userId,
-                    SelectedDate = selectedDate
-                });
+            using IDbConnection dbConnection = new SqlConnection(_ConnectionString);
+
+            IEnumerable<TimeEntry> timeEntries = dbConnection.Query<TimeEntry>(sql,
+            new
+            {
+                UserId = userId,
+                SelectedDate = selectedDate
+            });
 
             return timeEntries;
         }
