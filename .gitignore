@@ -21,3 +21,7 @@
 /TimeKeeper.Services/obj
 /TimeKeeper.Database/TimeKeeper.Database.dbmdl
 /TimeKeeper.Database/TimeKeeper.Database.jfm
+/.idea/
+/obj
+/TimeKeeper.Shared/bin
+/TimeKeeper.Shared/obj
