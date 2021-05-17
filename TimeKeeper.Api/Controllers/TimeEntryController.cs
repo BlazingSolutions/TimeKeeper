@@ -30,8 +30,7 @@ namespace TimeKeeper.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            // NSwag requires this to be OK (not created) by the looks, needs more investigation (or scrapping NSwag)
-            return Ok(await _mediator.Send(command));
+            return Created("TimeEntry", await _mediator.Send(command));
         }
 
         [HttpGet("GetForSelectedDate")]
