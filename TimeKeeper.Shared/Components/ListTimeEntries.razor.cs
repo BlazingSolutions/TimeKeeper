@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api;
@@ -11,7 +13,6 @@ namespace TimeKeeper.Shared.Components
     {
         [Parameter] public IEnumerable<GetForSelectedDate.Model> TimeEntries { get; set; }
         [Parameter] public DateTime SelectedDate { get; set; }
-        [Inject] public ITimeEntryApi TimeEntryApi { get; set; }
         [Parameter] public EventCallback<int> OnDeleted { get; set; }
 
         protected string GetClientName(int id)
