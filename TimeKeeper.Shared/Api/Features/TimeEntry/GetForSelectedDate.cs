@@ -18,6 +18,7 @@ namespace TimeKeeper.Shared.Api.Features.TimeEntry
             public int Client { get; set; }
             public decimal Hours { get; set; }
             public string Notes { get; set; }
+            public int Id { get; set; }
         }
     }
 }

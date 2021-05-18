@@ -40,5 +40,12 @@ namespace TimeKeeper.Api.Controllers
             var results = await _mediator.Send(query);
             return Ok(results);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery]Delete.Command command)
+        {
+            await _mediator.Send(command);
+            return Ok();
+        }
     }
 }
