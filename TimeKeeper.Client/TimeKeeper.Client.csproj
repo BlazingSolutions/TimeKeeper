@@ -8,11 +8,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.5" PrivateAssets="all" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.0.38" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj" />
+    <ProjectReference Include="..\TimeKeeper.Shared\TimeKeeper.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

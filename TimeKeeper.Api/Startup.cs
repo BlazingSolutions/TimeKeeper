@@ -1,11 +1,15 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-using TimeKeeper.Repository;
+using TimeKeeper.Api.Data;
 
 namespace TimeKeeper.Api
 {
@@ -22,11 +26,10 @@ namespace TimeKeeper.Api
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            TimeKeeperContext timeKeeperContext = new(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddDbContext<TimeKeeperContext>(options=>options.UseSqlServer(connectionString));
+            services.AddScoped(_=>new SqlConnection(connectionString));
             
-            services.AddScoped<ITimeEntryRepository>(_ => new TimeEntryRepository(timeKeeperContext, connectionString));
-
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -48,7 +51,7 @@ namespace TimeKeeper.Api
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.WithOrigins("http://localhost:44360", "https://localhost:44360")
+            app.UseCors(policy => policy.WithOrigins("http://localhost:44360", "https://localhost:44360", "http://localhost:5002", "https://localhost:5003")
             .AllowAnyMethod()
             .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization)
             .AllowCredentials());

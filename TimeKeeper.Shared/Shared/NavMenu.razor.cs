@@ -1,4 +1,4 @@
-﻿namespace TimeKeeper.ComponentLibrary.Shared
+﻿namespace TimeKeeper.Shared.Shared
 {
     public partial class NavMenu
     {

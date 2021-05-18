@@ -8,7 +8,7 @@
 
             <MudForm>
 
-                <MudSelect Label="Client" Class="mb-6" @bind-Value="TimeEntry.Client">
+                <MudSelect Label="Client" Class="mb-6" @bind-Value="Command.Client">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
                     <MudSelectItem Value="1">Amazon</MudSelectItem>
                     <MudSelectItem Value="2">Microsoft</MudSelectItem>
@@ -18,7 +18,7 @@
                     <MudSelectItem Value="6">Other</MudSelectItem>
                 </MudSelect>
 
-                <MudSelect Label="Category" Class="mb-6" @bind-Value="TimeEntry.Category">
+                <MudSelect Label="Category" Class="mb-6" @bind-Value="Command.Category">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
                     <MudSelectItem Value="1">Meeting</MudSelectItem>
                     <MudSelectItem Value="2">Call</MudSelectItem>
@@ -28,11 +28,11 @@
                 </MudSelect>
 
                 <MudItem xs="12" sm="12" md="12" Class="mb-6">
-                    <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" @bind-Value="TimeEntry.Notes" />
+                    <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" @bind-Value="Command.Notes" />
                 </MudItem>
 
                 <MudItem xs="12" sm="6" md="4" Class="mb-6">
-                    <MudNumericField Label="Hours" HelperText="Decimals allowed" Variant="Variant.Text" Min="0.0M" Max="24.0M" @bind-Value="TimeEntry.Hours" />
+                    <MudNumericField Label="Hours" HelperText="Decimals allowed" Variant="Variant.Text" Min="0.0M" Max="24.0M" @bind-Value="Command.Hours" />
                 </MudItem>
 
             </MudForm>

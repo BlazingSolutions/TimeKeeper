@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MudBlazor.Services;
 using System;
-using System.Net.Http;
-using TimeKeeper.Services;
+using Refit;
+using TimeKeeper.Shared.Api;
 
 namespace TimeKeeper.Server
 {
@@ -25,14 +25,11 @@ namespace TimeKeeper.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddMudServices();
 
-            services.AddScoped(s =>
-            {
-                return new HttpClient { BaseAddress = new Uri(Configuration.GetValue<string>("apiLocation")) };
-            });
-            
-            services.AddScoped<ITimeEntryService, TimeEntryService>();
+            services.AddRefitClient<ITimeEntryApi>()
+                .ConfigureHttpClient(c => { c.BaseAddress = new Uri(Configuration.GetValue<string>("apiLocation")); });
+
+            services.AddMudServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

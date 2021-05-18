@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeKeeper.ComponentLibrary\TimeKeeper.ComponentLibrary.csproj" />
+    <ProjectReference Include="..\TimeKeeper.Shared\TimeKeeper.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.0.38" />
   </ItemGroup>
 
 </Project>
