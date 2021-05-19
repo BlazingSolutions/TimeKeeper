@@ -18,8 +18,8 @@
                 <MudTd DataLabel="Category">@GetCategoryName(context.Category)</MudTd>
                 <MudTd DataLabel="Note">@context.Notes</MudTd>
                 <MudTd DataLabel="Hours">@context.Hours</MudTd>
-                <MudTd DataLabel="Actions">
-                    <MudButton OnClick="@(() => Delete(context.Id))">Delete</MudButton>
+                <MudTd DataLabel="Actions">                    
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => Delete(context.Id))"></MudIconButton>
                 </MudTd>
             </RowTemplate>
             <PagerContent>
