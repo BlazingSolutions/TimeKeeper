@@ -4,6 +4,7 @@
 
 /.vs
 /TimeKeeper.Api/bin/Debug/net5.0
+/TimeKeeper.Api/appsettings.Development.json
 /TimeKeeper.Api/obj
 /TimeKeeper.Client/bin/Debug/net5.0
 /TimeKeeper.Client/obj

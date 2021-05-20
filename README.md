@@ -50,7 +50,19 @@ Enter TimeKeeper as the database name and click on Publish. Your database will n
 
 ### Update Configuration Sections
 
-Update the server name found within the DefaultConnection in the appsettings.json file of TimeKeeper.API
+Create a new configuration file called appsettings.Development.json
+
+Paste the below text in changing localhost with the name of your SQL Server.
+
+```
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=TimeKeeper;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
+```
+
+Note that appsettings.Development.json is not tracked in the repository so you should only need to do the above once.
 
 
 
