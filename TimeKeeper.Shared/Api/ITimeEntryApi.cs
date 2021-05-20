@@ -12,5 +12,8 @@ namespace TimeKeeper.Shared.Api
 
         [Post("/api/TimeEntry")]
         Task<int> Create(CreateTimeEntry.Command command);
+
+        [Delete("/api/TimeEntry")]
+        Task Delete(Delete.Command command);
     }
 }

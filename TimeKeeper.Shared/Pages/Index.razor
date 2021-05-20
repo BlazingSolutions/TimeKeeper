@@ -18,7 +18,7 @@
             <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" @onclick="@(() => AddNewTimeEntry())">Add New Time Entry</MudButton>
         </MudItem>
 
-        <ListTimeEntries TimeEntries="@TimeEntries" SelectedDate="@SelectedDate" />
+        <ListTimeEntries TimeEntries="@TimeEntries" SelectedDate="@SelectedDate" OnDeleted="@((int id)=>Delete(id))"/>
     }
 
 </MudContainer>

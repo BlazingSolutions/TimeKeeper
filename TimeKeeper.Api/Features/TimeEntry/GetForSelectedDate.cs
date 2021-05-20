@@ -36,6 +36,7 @@ namespace TimeKeeper.Api.Features.TimeEntry
 
             return timeEntries.Select(x => new GetForSelectedDate.Model
             {
+                Id = x.Id,
                 Category = x.Category,
                 Client = x.Client,
                 Hours = x.Hours,

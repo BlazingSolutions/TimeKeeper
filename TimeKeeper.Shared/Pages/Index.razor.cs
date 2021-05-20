@@ -56,5 +56,11 @@ namespace TimeKeeper.Shared.Pages
                     break;
             }
         }
+
+        private async Task Delete(int id)
+        {
+            await TimeEntryApi.Delete(new Delete.Command{Id = id});
+            await GetTimeEntriesAsync();
+        }
     }
 }
