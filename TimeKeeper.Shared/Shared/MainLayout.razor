@@ -1,11 +1,21 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="currentTheme" />
 
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Time Keeper</MudText>
+        <MudText Typo="Typo.h5" Class="ml-3">
+            Time Keeper
+            @if (IsWasm)
+            {
+                <span>Client (WASM)</span>
+            }
+            else
+            {
+                <span>Server Side</span>
+            }
+        </MudText>
         <MudAppBarSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
