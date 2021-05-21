@@ -1,34 +1,22 @@
 ﻿using Microsoft.AspNetCore.Components;
-using MudBlazor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using MudBlazor;
 
 namespace TimeKeeper.Shared.Shared
-{   
+{
     public partial class MainLayout
     {
-        [Inject]
-        public NavigationManager MyNavigationManager { get; set; }
+        [Inject] public NavigationManager MyNavigationManager { get; set; }
 
-        protected bool IsWasm { get; set; } = false;
+        private HostingModel hostingModel;
+        protected MudTheme currentTheme => hostingModel.IsWasm ? darkTheme : defaultTheme;
 
-        protected override void OnInitialized()
+        protected override Task OnInitializedAsync()
         {
-            currentTheme = defaultTheme;
+            hostingModel = new HostingModel(MyNavigationManager.Uri);
+            return base.OnInitializedAsync();
+        }
 
-            IsWasm = MyNavigationManager.Uri.Contains("localhost:44360");
-
-            if(IsWasm)
-            {
-                currentTheme = darkTheme;
-            }
-        }        
-
-        MudTheme currentTheme = new();
-        
         readonly MudTheme defaultTheme = new()
         {
             Palette = new Palette()
@@ -36,7 +24,7 @@ namespace TimeKeeper.Shared.Shared
                 Black = "#272c34"
             }
         };
-        
+
         readonly MudTheme darkTheme = new()
         {
             Palette = new Palette()
