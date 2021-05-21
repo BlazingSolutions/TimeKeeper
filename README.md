@@ -48,9 +48,9 @@ Enter TimeKeeper as the database name and click on Publish. Your database will n
 
 ![Publish2](https://user-images.githubusercontent.com/52583820/118413582-00d25280-b698-11eb-84bd-071e114b39aa.png)
 
-### Update Configuration Sections
+### Review Database Connection String
 
-The database connection string can be found in the file appsettings.json and is set to use the SQL Server (localdb)\\mssqllocaldb and the database TimeKeeper.
+The database connection string can be found in the file appsettings.json within the TimeKeeper.Api project and is set to use the SQL Server (localdb)\\mssqllocaldb and the database TimeKeeper.
 
 If your SQL Server is different you should follow the below steps.
 
