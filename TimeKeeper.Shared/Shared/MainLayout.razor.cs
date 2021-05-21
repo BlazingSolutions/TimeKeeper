@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
-
-
-
-
 using MudBlazor;
 
 namespace TimeKeeper.Shared.Shared
 {
     public partial class MainLayout
     {
-        [Inject] 
-        public NavigationManager MyNavigationManager { get; set; }
+        [Inject] public NavigationManager MyNavigationManager { get; set; }
 
-        protected bool IsWasm => MyNavigationManager.Uri.Contains("localhost:44360");
-        public string BrandName => IsWasm ? "Client (WASM)" : "Server Side";
-        protected MudTheme currentTheme => IsWasm ? darkTheme : defaultTheme;
+        private HostingModel hostingModel;
+        protected MudTheme currentTheme => hostingModel.IsWasm ? darkTheme : defaultTheme;
+
+        protected override Task OnInitializedAsync()
+        {
+            hostingModel = new HostingModel(MyNavigationManager.Uri);
+            return base.OnInitializedAsync();
+        }
 
         readonly MudTheme defaultTheme = new()
         {
