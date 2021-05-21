@@ -16,7 +16,7 @@ namespace TimeKeeper.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddRefitClient<ITimeEntryApi>()
-                .ConfigureHttpClient(c => { c.BaseAddress = new Uri("https://localhost:44331/"); });
+                .ConfigureHttpClient(c => { c.BaseAddress = new Uri("https://localhost:5001/"); });
 
             builder.Services.AddMudServices();
 
