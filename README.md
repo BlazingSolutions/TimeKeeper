@@ -50,6 +50,10 @@ Enter TimeKeeper as the database name and click on Publish. Your database will n
 
 ### Update Configuration Sections
 
+The database connection string can be found in the file appsettings.json and is set to use the SQL Server (localdb)\\mssqllocaldb and the database TimeKeeper.
+
+If your SQL Server is different you should follow the below steps.
+
 Create a new configuration file called appsettings.Development.json
 
 Paste the below text in changing localhost with the name of your SQL Server.
