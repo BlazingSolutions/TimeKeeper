@@ -19,5 +19,7 @@ namespace TimeKeeper.Api.Domain
         public int? ModifiedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public int CreatedBy { get; set; }
+
+        public virtual Category CategoryNavigation { get; set; }
     }
 }

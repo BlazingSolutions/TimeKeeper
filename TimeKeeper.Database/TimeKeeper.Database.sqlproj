@@ -56,14 +56,17 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="SeedData" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="TimeEntries.sql" />
+    <Build Include="Categories.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TimeKeeper.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TimeKeeper.Database.publish.xml" />
+    <None Include="SeedData\CategorySeedData.sql" />
   </ItemGroup>
 </Project>

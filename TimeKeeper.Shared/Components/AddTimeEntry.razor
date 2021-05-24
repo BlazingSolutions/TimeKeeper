@@ -20,11 +20,13 @@
 
                 <MudSelect Label="Category" Class="mb-6" @bind-Value="Command.Category">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
-                    <MudSelectItem Value="1">Meeting</MudSelectItem>
-                    <MudSelectItem Value="2">Call</MudSelectItem>
-                    <MudSelectItem Value="3">Documentation</MudSelectItem>
-                    <MudSelectItem Value="4">Travel</MudSelectItem>
-                    <MudSelectItem Value="5">Other</MudSelectItem>
+                    @if (Categories is not null)
+                    {
+                        @foreach (var category in Categories)
+                        {
+                            <MudSelectItem Value="@(category.Id)">@category.Name</MudSelectItem>
+                        }
+                    }
                 </MudSelect>
 
                 <MudItem xs="12" sm="12" md="12" Class="mb-6">
