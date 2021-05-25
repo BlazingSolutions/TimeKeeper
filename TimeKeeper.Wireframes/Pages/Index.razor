@@ -1,0 +1,41 @@
+﻿@page "/"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+
+    <MudText Typo="Typo.h3" GutterBottom="true">Wireframes</MudText>
+
+    <MudAlert Severity="Severity.Success">Please find below listing of wireframes</MudAlert>
+
+    <br />
+
+    <MudSimpleTable Style="overflow-x: auto;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Page</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><MudLink Href="TimeEntry">Time Entry</MudLink></td>
+                <td>In Progress</td>
+                <td><MudLink Href="TimeEntry" Target="_blank"><MudIcon Icon="@Icons.Custom.Brands.GitHub" Title="GitHub" /></MudLink>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Submit Time Entries</td>
+                <td>Awaiting</td>
+                <td><MudLink Href="SubmitTimeEntries" Target="_blank"><MudIcon Icon="@Icons.Custom.Brands.GitHub" Title="GitHub" /></MudLink></td>
+            </tr>
+        </tbody>
+    </MudSimpleTable>
+
+</MudContainer>
+
+@code {
+
+}

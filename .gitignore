@@ -26,3 +26,5 @@
 /obj
 /TimeKeeper.Shared/bin
 /TimeKeeper.Shared/obj
+/TimeKeeper.Wireframes/bin/Debug/net5.0
+/TimeKeeper.Wireframes/obj

@@ -1,0 +1,47 @@
+﻿<MudTable Items="@SampleTimeEntries.Take(new Random().Next(2, SampleTimeEntries.Count))" Dense="false" Hover="true" Bordered="false" Striped="true" SortLabel="Sort by">    
+    <HeaderContent>
+        <MudTh>Client</MudTh>
+        <MudTh>Category</MudTh>
+        <MudTh>Note</MudTh>
+        <MudTh>Hours</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Client">@context.Client</MudTd>
+        <MudTd DataLabel="Category">@context.Category</MudTd>
+        <MudTd DataLabel="Note">@context.Note</MudTd>
+        <MudTd DataLabel="Hours">@context.Hours</MudTd>
+        <MudTd DataLabel="Actions">
+            <MudIconButton Icon="@Icons.Material.Filled.Edit"></MudIconButton>
+            <MudIconButton Icon="@Icons.Material.Filled.Delete"></MudIconButton>
+        </MudTd>
+    </RowTemplate>
+    <FooterContent>
+        <MudTd></MudTd>
+        <MudTd></MudTd>
+        <MudTd Style="text-align: right;"><strong>Total</strong></MudTd>
+        <MudTd><strong>7.0</strong></MudTd>
+        <MudTd></MudTd>
+    </FooterContent>
+</MudTable>
+
+@code {
+
+    public record SampleTimeEntry(string Client, string Category, string Note, decimal Hours);
+
+    protected List<SampleTimeEntry> SampleTimeEntries { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        SampleTimeEntries.Add(new("Microsoft", "Meeting", "", 2.5M));
+        SampleTimeEntries.Add(new("Google", "Meeting", "Discuss billing", 3));
+        SampleTimeEntries.Add(new("YouTube", "Meeting", "Introduction", 2));
+        SampleTimeEntries.Add(new("Facebook", "Other", "Reviewing notes", 2.5M));
+        SampleTimeEntries.Add(new("Twitter", "Call", "Zoom", 3));
+        SampleTimeEntries.Add(new("Dropbox", "Other", "", 2));
+        SampleTimeEntries.Add(new("Oracle", "Documentation", "Contract", 2.5M));
+        SampleTimeEntries.Add(new("Blazing Solutions", "Meeting", "", 3));
+        SampleTimeEntries.Add(new("Sony", "Call", "Evening meeting", 2));
+    }
+
+}

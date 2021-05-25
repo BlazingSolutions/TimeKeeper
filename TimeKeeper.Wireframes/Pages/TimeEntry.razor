@@ -1,0 +1,143 @@
+﻿@page "/TimeEntry"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+
+    <MudText Typo="Typo.h3" GutterBottom="true">Time Keeper</MudText>
+
+    <MudAlert Severity="Severity.Success">Welcome to your new time keeping app!</MudAlert>
+
+    @if (ShowAddTimeEntryForm)
+    {
+        <MudItem xs="12" xl="6" Class="mt-6 mb-12">
+
+            <MudCard>
+
+                <MudCardContent>
+
+                    <MudText Typo="Typo.h6" GutterBottom="true">Add Time Entry</MudText>
+
+                    <MudForm>
+
+                        <MudSelect Label="Client" Class="mb-6" T="int">
+                            <MudSelectItem Value="0">Please select</MudSelectItem>
+                            <MudSelectItem Value="1">Amazon</MudSelectItem>
+                            <MudSelectItem Value="2">Microsoft</MudSelectItem>
+                            <MudSelectItem Value="3">Google</MudSelectItem>
+                            <MudSelectItem Value="4">Twitter</MudSelectItem>
+                            <MudSelectItem Value="5">Facebook</MudSelectItem>
+                            <MudSelectItem Value="6">Other</MudSelectItem>
+                        </MudSelect>
+
+                        <MudSelect Label="Category" Class="mb-6" T="int">
+                            <MudSelectItem Value="0">Please select</MudSelectItem>
+                            <MudSelectItem Value="1">Meeting</MudSelectItem>
+                            <MudSelectItem Value="2">Call</MudSelectItem>
+                            <MudSelectItem Value="3">Documentation</MudSelectItem>
+                            <MudSelectItem Value="4">Travel</MudSelectItem>
+                            <MudSelectItem Value="5">Other</MudSelectItem>
+                        </MudSelect>
+
+                        <MudItem xs="12" sm="12" md="12" Class="mb-6">
+                            <MudTextField T="string" Label="Notes" Variant="Variant.Text" Lines="2" />
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6" md="4" Class="mb-6">
+                            <MudNumericField Label="Hours" HelperText="Decimals allowed" Variant="Variant.Text" Min="0.0M" Max="24.0M" />
+                        </MudItem>
+
+                    </MudForm>
+
+                </MudCardContent>
+
+                <MudCardActions>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mr-3" @onclick="@(() => AddNewTimeEntry())">Submit</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" @onclick="@(() => AddNewTimeEntry())">Cancel</MudButton>
+                </MudCardActions>
+
+            </MudCard>
+
+        </MudItem>
+    }
+    else
+    {
+        <MudItem xs="12" xl="6" Class="mt-6">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" @onclick="@(() => AddNewTimeEntry())">Add New Time Entry</MudButton>
+        </MudItem>
+
+        <br />
+
+        <MudGrid>
+
+            <MudItem xs="10">
+                <MudText Typo="Typo.h5" GutterBottom="true">Time log for @SelectedDate.ToLongDateString()</MudText>
+            </MudItem>
+
+            <MudItem xs="2">
+                <MudFab Color="Color.Secondary" Icon="@Icons.Material.Filled.HourglassEmpty" Size="Size.Medium" Label="Total Hours 40" />
+            </MudItem>
+
+        </MudGrid>
+
+        <MudTabs Outlined="true" Position="Position.Top" Rounded="true" Border="true" ApplyEffectsToContainer="true" Class="mt-8" PanelClass="pa-6">
+            <MudTabPanel Text="Monday (8)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Tuesday (8)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Wednesday (8)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Thursday (8)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Friday (8)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Saturday (0)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+            <MudTabPanel Text="Sunday (0)">
+                <MudText>
+                    <TimeEntryListing />
+                </MudText>
+            </MudTabPanel>
+        </MudTabs>
+    }
+
+</MudContainer>
+
+@code
+{
+    protected bool ShowAddTimeEntryForm { get; set; } = false;
+
+    protected DateTime SelectedDate => DateTime.Today;
+
+    public record SampleTimeEntry(string Client, string Category, string Note, decimal Hours);
+
+    protected List<SampleTimeEntry> SampleTimeEntries { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        SampleTimeEntries.Add(new("Microsoft", "Meeting", "Morning meeting", 2.5M));
+        SampleTimeEntries.Add(new("Google", "Meeting", "Afternoon meeting", 3));
+        SampleTimeEntries.Add(new("YouTube", "Meeting", "Evening meeting", 2));
+    }
+
+    protected void AddNewTimeEntry()
+    {
+        ShowAddTimeEntryForm = ShowAddTimeEntryForm == false;
+    }
+}

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Client", "TimeKe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Shared", "TimeKeeper.Shared\TimeKeeper.Shared.csproj", "{1872AB84-46A7-4234-93A7-169637D0F7F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeKeeper.Server", "TimeKeeper.Server\TimeKeeper.Server.csproj", "{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeKeeper.Server", "TimeKeeper.Server\TimeKeeper.Server.csproj", "{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeKeeper.Wireframes", "TimeKeeper.Wireframes\TimeKeeper.Wireframes.csproj", "{B2247DE3-B332-49CA-835A-84CB4F22BAC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28E0D4E0-3A49-4442-BEAF-9C7879334E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2247DE3-B332-49CA-835A-84CB4F22BAC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2247DE3-B332-49CA-835A-84CB4F22BAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2247DE3-B332-49CA-835A-84CB4F22BAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2247DE3-B332-49CA-835A-84CB4F22BAC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
