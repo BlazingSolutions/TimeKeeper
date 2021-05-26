@@ -5,9 +5,6 @@ namespace TimeKeeper.Shared.Api.Features.TimeEntry
 {
     public class CreateTimeEntry
     {
-        // validator could also go here (and could be used in both clients + the API
-        // for fast feedback on client + reliable validation on the server)
-
         public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator()
