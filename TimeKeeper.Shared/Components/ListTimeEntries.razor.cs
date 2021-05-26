@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api;
-using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Shared.Components
 {

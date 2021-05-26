@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     </PropertyGroup>
 
@@ -13,27 +13,13 @@
     <ItemGroup>
         <PackageReference Include="Blazored.FluentValidation" Version="2.0.0" />
         <PackageReference Include="MediatR" Version="9.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.5" />
-        <PackageReference Include="MudBlazor" Version="5.0.8" />
-        <PackageReference Include="NSwag.MSBuild" Version="13.11.1">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.4.21253.5" />
+        <PackageReference Include="MudBlazor" Version="5.0.10" />
         <PackageReference Include="Refit" Version="6.0.38" />
     </ItemGroup>
 
     <ItemGroup>
         <Folder Include="wwwroot\" />
     </ItemGroup>
-
-<!--    <Target Name="NSwag" BeforeTargets="BeforeBuild" Condition="'$(TF_BUILD)'!='True'">-->
-<!--        <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration),CSharpOutputPath=$(MSBuildThisFileDirectory)\Api\Client.CSharp">-->
-<!--            <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />-->
-<!--            <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />-->
-<!--        </Exec>-->
-
-<!--        <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />-->
-<!--        <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />-->
-<!--    </Target>-->
 
 </Project>
