@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
@@ -24,7 +25,7 @@ namespace TimeKeeper.Shared.Components
             };
         }
 
-        protected async Task SaveAsync()
+        protected async Task HandleValidSubmit()
         {
             await TimeEntryApi.Create(Command);
             await OnClick.InvokeAsync("SubmitTimeEntry");
