@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
@@ -7,6 +8,7 @@ namespace TimeKeeper.Shared.Components
 {
     public partial class AddTimeEntry
     {
+        private bool success;
         [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
 
         [Parameter] public EventCallback<string> OnClick { get; set; }
@@ -24,8 +26,11 @@ namespace TimeKeeper.Shared.Components
             };
         }
 
-        protected async Task SaveAsync()
+        protected async Task HandleValidSubmit()
         {
+            Console.Write("Valid Submit");
+            
+            success = true;
             await TimeEntryApi.Create(Command);
             await OnClick.InvokeAsync("SubmitTimeEntry");
         }

@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazored.FluentValidation" Version="2.0.0" />
         <PackageReference Include="MediatR" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.5" />
         <PackageReference Include="MudBlazor" Version="5.0.8" />
