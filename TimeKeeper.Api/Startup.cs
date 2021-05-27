@@ -1,4 +1,5 @@
 using System.Reflection;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using TimeKeeper.Api.Data;
+using TimeKeeper.Api.Infrastructure;
+using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api
 {
@@ -30,7 +33,12 @@ namespace TimeKeeper.Api
             services.AddScoped(_=>new SqlConnection(connectionString));
             
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddControllers();
+            services.AddControllers(options =>
+                {
+                    options.Filters.Add<ValidatorActionFilter>();
+                })
+                .AddFluentValidation(fv=>fv.RegisterValidatorsFromAssemblyContaining<CreateTimeEntry.CommandValidator>());
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TimeKeeper.Api", Version = "v1" });
