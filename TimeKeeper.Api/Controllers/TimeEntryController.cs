@@ -18,7 +18,7 @@ namespace TimeKeeper.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create([FromBody] CreateTimeEntry.Command command)
+        public async Task<ActionResult<int>> Create([FromBody] Create.Command command)
         {
             if (command == null)
             {
@@ -34,8 +34,7 @@ namespace TimeKeeper.Api.Controllers
         }
 
         [HttpGet("GetForSelectedDate")]
-        public async Task<ActionResult<IEnumerable<GetForSelectedDate.Model>>> GetForSelectedDate(
-            [FromQuery] GetForSelectedDate.Query query)
+        public async Task<ActionResult<IEnumerable<GetForSelectedDate.Model>>> GetForSelectedDate([FromQuery] GetForSelectedDate.Query query)
         {
             var results = await _mediator.Send(query);
             return Ok(results);

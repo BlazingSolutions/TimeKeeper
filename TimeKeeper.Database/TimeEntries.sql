@@ -12,5 +12,6 @@
     [DateModified] DATETIME NULL, 
     [ModifiedBy] INT NULL, 
     [DateCreated] DATETIME NOT NULL, 
-    [CreatedBy] INT NOT NULL 
+    [CreatedBy] INT NOT NULL, 
+    CONSTRAINT [FK_TimeEntries_Categories] FOREIGN KEY ([Category]) REFERENCES [Categories]([Id]) 
 )

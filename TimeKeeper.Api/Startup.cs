@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
-using Microsoft.OpenApi.Models;
 using TimeKeeper.Api.Data;
 using TimeKeeper.Api.Infrastructure;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
@@ -29,20 +28,15 @@ namespace TimeKeeper.Api
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<TimeKeeperContext>(options=>options.UseSqlServer(connectionString));
-            services.AddScoped(_=>new SqlConnection(connectionString));
-            
+            services.AddDbContext<TimeKeeperContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped(_ => new SqlConnection(connectionString));
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddControllers(options =>
-                {
-                    options.Filters.Add<ValidatorActionFilter>();
-                })
-                .AddFluentValidation(fv=>fv.RegisterValidatorsFromAssemblyContaining<CreateTimeEntry.CommandValidator>());
             
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TimeKeeper.Api", Version = "v1" });
-            });
+            services.AddControllers(options => { options.Filters.Add<ValidatorActionFilter>(); })
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Create.CommandValidator>());
+
+            services.ConfigureSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,17 +53,15 @@ namespace TimeKeeper.Api
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.WithOrigins("http://localhost:44360", "https://localhost:44360", "http://localhost:5002", "https://localhost:5003")
-            .AllowAnyMethod()
-            .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization)
-            .AllowCredentials());
+            app.UseCors(policy => policy.WithOrigins("http://localhost:44360", "https://localhost:44360",
+                    "http://localhost:5002", "https://localhost:5003")
+                .AllowAnyMethod()
+                .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization)
+                .AllowCredentials());
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

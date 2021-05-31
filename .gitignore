@@ -26,3 +26,4 @@
 /obj
 /TimeKeeper.Shared/bin
 /TimeKeeper.Shared/obj
+**/bin/

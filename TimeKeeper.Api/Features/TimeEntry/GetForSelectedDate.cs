@@ -26,12 +26,11 @@ namespace TimeKeeper.Api.Features.TimeEntry
                          "WHERE [User] = @UserId AND CAST(DateCreated As date) = CAST(@selectedDate As date) " +
                          "ORDER BY DateCreated DESC";
 
-            IEnumerable<Domain.TimeEntry> timeEntries =
-                await _dbConnection.QueryAsync<Domain.TimeEntry>(sql,
+            IEnumerable<Domain.TimeEntry> timeEntries = await _dbConnection.QueryAsync<Domain.TimeEntry>(sql,
                     new
                     {
-                        UserId = request.UserId,
-                        SelectedDate = request.SelectedDate
+                        request.UserId,
+                        request.SelectedDate
                     });
 
             return timeEntries.Select(x => new GetForSelectedDate.Model

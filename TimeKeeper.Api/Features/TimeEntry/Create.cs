@@ -7,16 +7,16 @@ using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Api.Features.TimeEntry
 {
-    public class CreateTimeEntryHandler : IRequestHandler<CreateTimeEntry.Command, int>
+    public class CreateHandles : IRequestHandler<Create.Command, int>
     {
         private readonly TimeKeeperContext _context;
 
-        public CreateTimeEntryHandler(TimeKeeperContext context)
+        public CreateHandles(TimeKeeperContext context)
         {
             _context = context;
         }
 
-        public async Task<int> Handle(CreateTimeEntry.Command command, CancellationToken cancellationToken)
+        public async Task<int> Handle(Create.Command command, CancellationToken cancellationToken)
         {
             var timeEntry = new Domain.TimeEntry
             {
