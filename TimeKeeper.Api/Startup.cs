@@ -32,9 +32,9 @@ namespace TimeKeeper.Api
             services.AddScoped(_ => new SqlConnection(connectionString));
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            
             services.AddControllers(options => { options.Filters.Add<ValidatorActionFilter>(); })
-                .AddFluentValidation(fv =>
-                    fv.RegisterValidatorsFromAssemblyContaining<CreateTimeEntry.CommandValidator>());
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Create.CommandValidator>());
 
             services.ConfigureSwagger();
         }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace TimeKeeper.Shared.Api.Features.TimeEntry
 {
-    public class CreateTimeEntry
+    public class Create
     {
         public class CommandValidator : AbstractValidator<Command>
         {

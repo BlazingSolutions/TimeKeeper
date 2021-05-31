@@ -14,7 +14,7 @@ namespace TimeKeeper.Shared.Components
 
         [Parameter] public EventCallback<string> OnClick { get; set; }
 
-        protected CreateTimeEntry.Command Command { get; set; }
+        protected Create.Command Command { get; set; }
 
         protected IEnumerable<GetActive.Model> Categories { get; set; }
 
@@ -23,7 +23,7 @@ namespace TimeKeeper.Shared.Components
             //TODO this will be replaced with actual user id once authentication has been implemented.
             var userId = 1;
 
-            Command = new CreateTimeEntry.Command
+            Command = new Create.Command
             {
                 UserId = userId
             };            

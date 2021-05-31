@@ -15,7 +15,7 @@ namespace TimeKeeper.Shared.Api
         Task<IEnumerable<GetForSelectedDate.Model>> GetForSelectedDate(GetForSelectedDate.Query query);
 
         [Post("/api/TimeEntry")]
-        Task<int> Create(CreateTimeEntry.Command command);
+        Task<int> Create(Create.Command command);
 
         [Delete("/api/TimeEntry")]
         Task Delete(Delete.Command command);        
