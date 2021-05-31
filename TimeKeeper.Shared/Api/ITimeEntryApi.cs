@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Refit;
-using TimeKeeper.Shared.Api.Features.Category;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Shared.Api
 {
     public interface ITimeEntryApi
-    {
+    {        
         [Get("/api/Category/GetActive")]        
-        Task<IEnumerable<GetActive.Model>> GetActive(GetActive.Query query);
+        Task<IEnumerable<Features.Category.GetActive.Model>> GetActive(Features.Category.GetActive.Query query);
+
+        [Get("/api/Client/GetActive")]
+        Task<IEnumerable<Features.Client.GetActive.Model>> GetActive(Features.Client.GetActive.Query query);
 
         [Get("/api/TimeEntry/GetForSelectedDate")]
         Task<IEnumerable<GetForSelectedDate.Model>> GetForSelectedDate(GetForSelectedDate.Query query);

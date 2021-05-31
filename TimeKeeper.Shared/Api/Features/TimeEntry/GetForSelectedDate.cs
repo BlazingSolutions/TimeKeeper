@@ -14,8 +14,8 @@ namespace TimeKeeper.Shared.Api.Features.TimeEntry
 
         public record Model
         {
-            public int Category { get; set; }
-            public int Client { get; set; }
+            public string CategoryName { get; set; }
+            public string ClientName { get; set; }
             public decimal Hours { get; set; }
             public string Notes { get; set; }
             public int Id { get; set; }

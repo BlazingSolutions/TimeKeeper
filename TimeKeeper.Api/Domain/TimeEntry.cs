@@ -21,5 +21,6 @@ namespace TimeKeeper.Api.Domain
         public int CreatedBy { get; set; }
 
         public virtual Category CategoryNavigation { get; set; }
+        public virtual Client ClientNavigation { get; set; }
     }
 }

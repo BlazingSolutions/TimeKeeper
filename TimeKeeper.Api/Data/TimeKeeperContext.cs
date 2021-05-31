@@ -13,6 +13,7 @@ namespace TimeKeeper.Api.Data
         }
 
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<TimeEntry> TimeEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -47,6 +48,12 @@ namespace TimeKeeper.Api.Data
                     .HasForeignKey(d => d.Category)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TimeEntries_Categories");
+
+                entity.HasOne(d => d.ClientNavigation)
+                    .WithMany(p => p.TimeEntries)
+                    .HasForeignKey(d => d.Client)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_TimeEntries_Clients");
             });
         }
 

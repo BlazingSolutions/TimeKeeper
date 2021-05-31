@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
@@ -22,25 +21,19 @@ namespace TimeKeeper.Api.Features.TimeEntry
         public async Task<IEnumerable<GetForSelectedDate.Model>> Handle(GetForSelectedDate.Query request,
             CancellationToken cancellationToken)
         {
-            string sql = "SELECT * FROM TimeEntries " +
-                         "WHERE [User] = @UserId AND CAST(DateCreated As date) = CAST(@selectedDate As date) " +
-                         "ORDER BY DateCreated DESC";
+            string sql = "SELECT TimeEntries.Id, TimeEntries.Hours, TimeEntries.Notes, Categories.Name As CategoryName, Clients.Name As ClientName " +
+                "FROM TimeEntries " +
+                "INNER JOIN Categories ON Categories.Id = Category " +
+                "INNER JOIN Clients ON Clients.Id = Client " +
+                "WHERE [User] = @UserId AND CAST(TimeEntries.DateCreated As date) = CAST(@selectedDate As date) " +
+                "ORDER BY TimeEntries.DateCreated DESC";
 
-            IEnumerable<Domain.TimeEntry> timeEntries = await _dbConnection.QueryAsync<Domain.TimeEntry>(sql,
-                    new
-                    {
-                        request.UserId,
-                        request.SelectedDate
-                    });
-
-            return timeEntries.Select(x => new GetForSelectedDate.Model
-            {
-                Id = x.Id,
-                Category = x.Category,
-                Client = x.Client,
-                Hours = x.Hours,
-                Notes = x.Notes
-            });
+            return await _dbConnection.QueryAsync<GetForSelectedDate.Model>(sql,
+                new
+                {
+                    request.UserId,
+                    request.SelectedDate
+                });
         }
     }
 }

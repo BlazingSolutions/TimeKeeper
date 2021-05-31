@@ -61,6 +61,7 @@
   <ItemGroup>
     <Build Include="TimeEntries.sql" />
     <Build Include="Categories.sql" />
+    <Build Include="Clients.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TimeKeeper.Database.refactorlog" />
@@ -68,5 +69,6 @@
   <ItemGroup>
     <None Include="TimeKeeper.Database.publish.xml" />
     <None Include="SeedData\CategorySeedData.sql" />
+	<None Include="SeedData\ClientSeedData.sql" />
   </ItemGroup>
 </Project>

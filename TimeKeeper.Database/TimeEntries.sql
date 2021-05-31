@@ -13,5 +13,6 @@
     [ModifiedBy] INT NULL, 
     [DateCreated] DATETIME NOT NULL, 
     [CreatedBy] INT NOT NULL, 
+    CONSTRAINT [FK_TimeEntries_Clients] FOREIGN KEY ([Client]) REFERENCES [Clients]([Id]),
     CONSTRAINT [FK_TimeEntries_Categories] FOREIGN KEY ([Category]) REFERENCES [Categories]([Id]) 
 )
