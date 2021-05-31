@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using TimeKeeper.Shared.Api;
-using TimeKeeper.Shared.Api.Features.Category;
 using TimeKeeper.Shared.Api.Features.TimeEntry;
 
 namespace TimeKeeper.Shared.Components
@@ -16,7 +16,9 @@ namespace TimeKeeper.Shared.Components
 
         protected Create.Command Command { get; set; }
 
-        protected IEnumerable<GetActive.Model> Categories { get; set; }
+        protected IEnumerable<Api.Features.Category.GetActive.Model> Categories { get; set; }
+
+        protected IEnumerable<Api.Features.Client.GetActive.Model> Clients { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -28,7 +30,8 @@ namespace TimeKeeper.Shared.Components
                 UserId = userId
             };            
 
-            Categories = await TimeEntryApi.GetActive(new GetActive.Query());
+            Categories = await TimeEntryApi.GetActive(new Api.Features.Category.GetActive.Query());
+            Clients = await TimeEntryApi.GetActive(new Api.Features.Client.GetActive.Query());
         }
 
         protected async Task SaveAsync()

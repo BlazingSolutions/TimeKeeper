@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TimeKeeper.Api.Data;
-using TimeKeeper.Shared.Api.Features.Category;
+using TimeKeeper.Shared.Api.Features.Client;
 
-namespace TimeKeeper.Api.Features.Category
+namespace TimeKeeper.Api.Features.Client
 {
     public class GetActiveHandler : IRequestHandler<GetActive.Query, IEnumerable<GetActive.Model>>
     {
@@ -20,9 +20,9 @@ namespace TimeKeeper.Api.Features.Category
 
         public async Task<IEnumerable<GetActive.Model>> Handle(GetActive.Query request, CancellationToken cancellationToken)
         {
-            var categories = await _context.Categories.Where(x => x.IsActive).OrderBy(x => x.Name).ToListAsync(cancellationToken: cancellationToken);                       
+            var clients = await _context.Clients.Where(x => x.IsActive).OrderBy(x => x.Name).ToListAsync(cancellationToken: cancellationToken);
 
-            return categories.Select(x => new GetActive.Model
+            return clients.Select(x => new GetActive.Model
             {
                 Id = x.Id,
                 Name = x.Name

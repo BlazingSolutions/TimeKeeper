@@ -10,12 +10,13 @@
                 <FluentValidationValidator/>
                 <MudSelect Label="Client" Class="mb-6" @bind-Value="Command.Client" For="@(() => Command.Client)">
                     <MudSelectItem Value="0">Please select</MudSelectItem>
-                    <MudSelectItem Value="1">Amazon</MudSelectItem>
-                    <MudSelectItem Value="2">Microsoft</MudSelectItem>
-                    <MudSelectItem Value="3">Google</MudSelectItem>
-                    <MudSelectItem Value="4">Twitter</MudSelectItem>
-                    <MudSelectItem Value="5">Facebook</MudSelectItem>
-                    <MudSelectItem Value="6">Other</MudSelectItem>
+                    @if (Clients is not null)
+                    {
+                        @foreach (var client in Clients)
+                        {
+                            <MudSelectItem Value="@(client.Id)">@client.Name</MudSelectItem>
+                        }
+                    }
                 </MudSelect>
 
                 <MudSelect Label="Category" Class="mb-6" @bind-Value="Command.Category" For="@(() => Command.Category)">

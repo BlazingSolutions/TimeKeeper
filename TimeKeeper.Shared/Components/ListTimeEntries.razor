@@ -14,8 +14,8 @@
                 <MudTh>Actions</MudTh>
             </HeaderContent>
             <RowTemplate>
-                <MudTd DataLabel="Client">@GetClientName(context.Client)</MudTd>
-                <MudTd DataLabel="Category">@GetCategoryName(context.Category)</MudTd>
+                <MudTd DataLabel="Client">@context.ClientName</MudTd>
+                <MudTd DataLabel="Category">@context.CategoryName</MudTd>
                 <MudTd DataLabel="Note">@context.Notes</MudTd>
                 <MudTd DataLabel="Hours">@context.Hours</MudTd>
                 <MudTd DataLabel="Actions">                    
