@@ -15,6 +15,9 @@ services:
       dockerfile: ./build/api.Dockerfile
     ports:
       - "5000:5000"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=TimeKeeper;MultipleActiveResultSets=true;User Id=SA;Password=Password1!
+
   client:
     container_name: Timekeeper_client
     build:
