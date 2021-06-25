@@ -1,0 +1,24 @@
+﻿version: '3.8'
+
+services:
+  db:
+    container_name: Timekeeper_sql_server
+    build:
+      context: ./../
+      dockerfile: ./build/mssqlserver.Dockerfile
+    ports:
+        - "1433:1433"
+  api:
+    container_name: Timekeeper_api
+    build:
+      context: ./../
+      dockerfile: ./build/api.Dockerfile
+    ports:
+      - "5000:5000"
+  client:
+    container_name: Timekeeper_client
+    build:
+      context: ./../
+      dockerfile: ./build/client.Dockerfile
+    ports:
+      - "5002:80"
