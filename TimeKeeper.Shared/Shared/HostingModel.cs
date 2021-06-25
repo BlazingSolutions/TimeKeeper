@@ -8,7 +8,7 @@ namespace TimeKeeper.Shared.Shared
         {
             this.uri = uri;
         }
-        public bool IsWasm => uri.Contains("localhost:44360") || uri.Contains("localhost:5003");
+        public bool IsWasm => uri.Contains("localhost:44360") || uri.Contains("localhost:5003") || uri.Contains("localhost:5002");
         public string Name => IsWasm ? "Client (WASM)" : "Server Side";
     }
 }
