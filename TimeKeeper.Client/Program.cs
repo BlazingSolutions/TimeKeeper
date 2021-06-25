@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Refit;
 using TimeKeeper.Shared.Api;
 
@@ -15,8 +16,10 @@ namespace TimeKeeper.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
+            var apiLocation = builder.Configuration.GetValue<string>("apiLocation") ?? "https://localhost:44331/";
+
             builder.Services.AddRefitClient<ITimeEntryApi>()
-                .ConfigureHttpClient(c => { c.BaseAddress = new Uri("https://localhost:44331"); });
+                .ConfigureHttpClient(c => { c.BaseAddress = new Uri(apiLocation); });
 
             builder.Services.AddMudServices();
 
