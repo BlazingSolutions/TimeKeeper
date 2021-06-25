@@ -3,6 +3,13 @@ GO
 USE TimeKeeper;
 GO
 
+CREATE LOGIN TestUser WITH PASSWORD = 'T1meKeeper!';
+GO
+CREATE USER TestUser FOR LOGIN TestUser;
+GO
+ALTER SERVER ROLE sysadmin ADD MEMBER [TestUser];
+GO
+
 CREATE TABLE [dbo].[TimeEntries]
 (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY,

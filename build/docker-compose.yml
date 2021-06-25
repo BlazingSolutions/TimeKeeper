@@ -16,7 +16,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Database=TimeKeeper;MultipleActiveResultSets=true;User Id=SA;Password=Password1!
+      - ConnectionStrings__DefaultConnection=Server=db;Database=TimeKeeper;MultipleActiveResultSets=true;User Id=TestUser;Password=T1meKeeper!
 
   client:
     container_name: Timekeeper_client
