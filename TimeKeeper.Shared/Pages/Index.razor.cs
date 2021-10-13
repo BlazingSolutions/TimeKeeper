@@ -11,7 +11,7 @@ namespace TimeKeeper.Shared.Pages
     public partial class Index
     {
         [Inject] protected ITimeEntryApi TimeEntryApi { get; set; }
-        
+
         protected DateTime SelectedDate { get; set; }
 
         protected IEnumerable<GetForSelectedDate.Model> TimeEntries { get; set; }
@@ -21,7 +21,7 @@ namespace TimeKeeper.Shared.Pages
         protected override async Task OnInitializedAsync()
         {
             SelectedDate = DateTime.Today;
-            
+
             await GetTimeEntriesAsync();
         }
 
@@ -30,11 +30,7 @@ namespace TimeKeeper.Shared.Pages
             //TODO this will be replaced with actual user id once authentication has been implemented.
             var userId = 1;
 
-            TimeEntries = await TimeEntryApi.GetForSelectedDate(new GetForSelectedDate.Query
-            {
-                UserId = userId,
-                SelectedDate = SelectedDate
-            });
+            TimeEntries = await TimeEntryApi.GetForSelectedDate(userId, SelectedDate);
 
             DisplayAddEntry = TimeEntries.Any() == false;
         }
@@ -45,7 +41,7 @@ namespace TimeKeeper.Shared.Pages
         }
 
         public async Task SubmitActionAsync(string action)
-        {            
+        {
             switch (action)
             {
                 case "SubmitTimeEntry":
@@ -59,7 +55,7 @@ namespace TimeKeeper.Shared.Pages
 
         private async Task Delete(int id)
         {
-            await TimeEntryApi.Delete(new Delete.Command{Id = id});
+            await TimeEntryApi.Delete(new Delete.Command { Id = id });
             await GetTimeEntriesAsync();
         }
     }

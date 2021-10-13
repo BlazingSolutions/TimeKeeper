@@ -30,8 +30,8 @@ namespace TimeKeeper.Shared.Components
                 UserId = userId
             };            
 
-            Categories = await TimeEntryApi.GetActive(new Api.Features.Category.GetActive.Query());
-            Clients = await TimeEntryApi.GetActive(new Api.Features.Client.GetActive.Query());
+            Categories = await TimeEntryApi.GetActiveCategories();
+            Clients = await TimeEntryApi.GetActiveClients();
         }
 
         protected async Task SaveAsync()
